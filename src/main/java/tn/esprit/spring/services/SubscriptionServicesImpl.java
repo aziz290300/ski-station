@@ -70,11 +70,23 @@ public class SubscriptionServicesImpl implements ISubscriptionServices{
     }
 
    // @Scheduled(cron = "* 0 9 1 * *") /* Cron expression to run a job every month at 9am */
-    @Scheduled(cron = "*/30 * * * * *") /* Cron expression to run a job every 30 secondes */
-    public void showMonthlyRecurringRevenue() {
-        Float revenue = subscriptionRepository.recurringRevenueByTypeSubEquals(TypeSubscription.MONTHLY)
-                + subscriptionRepository.recurringRevenueByTypeSubEquals(TypeSubscription.SEMESTRIEL)/6
-                + subscriptionRepository.recurringRevenueByTypeSubEquals(TypeSubscription.ANNUAL)/12;
-        log.info("Monthly Revenue = " + revenue);
-    }
+   @Scheduled(cron = "*/30 * * * * *") // Cron expression to run a job every 30 seconds
+   public void showMonthlyRecurringRevenue() {
+       // Récupérer les revenus pour chaque type d'abonnement, avec vérification des valeurs nulles
+       Float monthlyRevenue = subscriptionRepository.recurringRevenueByTypeSubEquals(TypeSubscription.MONTHLY);
+       Float semestrielRevenue = subscriptionRepository.recurringRevenueByTypeSubEquals(TypeSubscription.SEMESTRIEL);
+       Float annualRevenue = subscriptionRepository.recurringRevenueByTypeSubEquals(TypeSubscription.ANNUAL);
+
+       // Si l'un des revenus est null, on les remplace par 0.0f
+       monthlyRevenue = (monthlyRevenue != null) ? monthlyRevenue : 0.0f;
+       semestrielRevenue = (semestrielRevenue != null) ? semestrielRevenue : 0.0f;
+       annualRevenue = (annualRevenue != null) ? annualRevenue : 0.0f;
+
+       // Calculer le revenu total en tenant compte des périodes des abonnements
+       Float revenue = monthlyRevenue + (semestrielRevenue / 6) + (annualRevenue / 12);
+
+       // Afficher le revenu mensuel
+       log.info("Monthly Revenue = " + revenue);
+   }
+
 }

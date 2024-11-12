@@ -72,6 +72,7 @@
 		</snapshotRepository>
 	</distributionManagement>
 	<build>
+		<finalName>gestion-station-ski-17-0.0.1-SNAPSHOT</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
@@ -87,5 +88,6 @@
 			</plugin>
 		</plugins>
 	</build>
+
 
 </project>

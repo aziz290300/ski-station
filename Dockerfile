@@ -3,7 +3,6 @@ FROM openjdk:17-jdk-alpine
 
 # Expose the port that the Spring Boot application runs on
 EXPOSE 8089
-WORKDIR /DevOps_Project
 # Add the JAR file to the Docker image
 ADD target/gestion-station-ski-17-0.0.1-SNAPSHOT.jar gestion-station-ski-17-0.0.1-SNAPSHOT.jar
 

@@ -12,7 +12,7 @@ services:
     volumes:
       - database:/var/lib/mysql
   App_Backend:
-    image: aziz198/tgestion-station-ski:latest
+    image: aziz198/gestion-station-ski:latest
     restart: on-failure
     ports:
       - 8089:8089

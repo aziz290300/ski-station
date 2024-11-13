@@ -21,6 +21,10 @@ public class InstructorServicesImpl implements IInstructorServices{
     private IInstructorRepository instructorRepository;
     private ICourseRepository courseRepository;
 
+    public InstructorServicesImpl() {
+
+    }
+
     @Override
     public Instructor addInstructor(Instructor instructor) {
         return instructorRepository.save(instructor);

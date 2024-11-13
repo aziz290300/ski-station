@@ -35,8 +35,7 @@ public class Course implements Serializable {
 	@JsonIgnore
 	@OneToMany(mappedBy= "course")
 	Set<Registration> registrations;
-	@JsonBackReference
+	@JsonIgnore
 	@ManyToOne
-	@JoinColumn(name = "instructor_id")
 	Instructor instructor;
 }

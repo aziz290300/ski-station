@@ -6,6 +6,7 @@ import java.util.Set;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -26,7 +27,7 @@ public class Instructor implements Serializable {
 	String firstName;
 	String lastName;
 	LocalDate dateOfHire;
+	@JsonIgnore
 	@OneToMany(mappedBy = "instructor", cascade = CascadeType.ALL)
-	@JsonManagedReference
 	Set<Course> courses;
 }

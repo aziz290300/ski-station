@@ -1,4 +1,3 @@
-/*
 package tn.esprit.spring;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -18,7 +17,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 public class InstructorServiceTest {
-
+    @Mock
     private IInstructorRepository instructorRepository;
 
     @InjectMocks
@@ -118,4 +117,3 @@ public class InstructorServiceTest {
         verify(instructorRepository, times(1)).findAll();
     }
 }
-*/

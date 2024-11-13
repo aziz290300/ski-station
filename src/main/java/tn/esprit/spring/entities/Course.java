@@ -5,6 +5,7 @@ import java.util.Set;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -34,5 +35,8 @@ public class Course implements Serializable {
 	@JsonIgnore
 	@OneToMany(mappedBy= "course")
 	Set<Registration> registrations;
-
+	@JsonBackReference
+	@ManyToOne
+	@JoinColumn(name = "instructor_id")
+	Instructor instructor;
 }

@@ -28,6 +28,6 @@ public class Instructor implements Serializable {
 	String lastName;
 	LocalDate dateOfHire;
 
-	@OneToMany(mappedBy = "instructor", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "instructor")
 	Set<Course> courses;
 }

@@ -27,7 +27,7 @@ public class Instructor implements Serializable {
 	String firstName;
 	String lastName;
 	LocalDate dateOfHire;
-	@JsonIgnore
+
 	@OneToMany(mappedBy = "instructor", cascade = CascadeType.ALL)
 	Set<Course> courses;
 }

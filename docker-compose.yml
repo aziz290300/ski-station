@@ -8,9 +8,7 @@ services:
     ports:
       - 3307:3306
     volumes:
-      - mysql_data:/var/lib/mysql
-  networks:
-      - skistation_network
+      - db:/var/lib/mysql
   app:
     depends_on:
       - mysqldb
@@ -33,5 +31,5 @@ volumes:
   db:
 
 networks:
-  skistation_network:
+  custom_network:
     driver: bridge

@@ -8,9 +8,9 @@ services:
     ports:
       - 3307:3306
     volumes:
-      - db:/var/lib/mysql
+      - mysql_data:/var/lib/mysql
   networks:
-    - skistation_network
+      - skistation_network
   app:
     depends_on:
       - mysqldb
